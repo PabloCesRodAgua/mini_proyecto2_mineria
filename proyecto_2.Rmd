@@ -1,6 +1,6 @@
 ---
 title: "proyecto_2_minería_de_datos"
-author: "Pablo César Rodríguez Aguayo"
+author: "Santiago Delgado Ramos, Luis Armando Espinosa Mejía, Pablo César Rodríguez Aguayo"
 date: "March 15, 2017"
 output: html_document
 ---
@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 ## 1.- Basic Data Analysis
 
-### 1.1.- Introducction 
+### 1.1.- Introduction 
 
 ### 1.2.- How data was recolected
 
