@@ -32,9 +32,25 @@ knitr::opts_chunk$set(echo = TRUE)
 ### 1.9.- Scatterplots Interpretation
 
 ## 2.- K - Nearest Neighbors
+KNN is a supervised classified method that classifies by characteristics of unlabeled examples by assigning t
+a class of similar label. The succes of this algorithm depends on the prediction, and the amount of data given.
+But if the given data is noisy and there is no clear distinction among the groups, the nearest neighborg algorithms 
+may struggle to identify the class boundaries.
+
+Strenghts
+- Simple and effective.
+- Makes no assumptions abouthe the underlying data distribution.
+- Fast training phase.
+Weaknesses
+- Doesn't produces a model, limiting the ability to understand how features are related to a class.
+- Requieres selection of appropiate **k value**.
+- Slow classification phase.
+- Nominal features and missing data requiere addtional processing.
+
+
 
 ### 2.1.- Normalization
-## 2.1.1 Method 1 ()
+## 2.1.1 Method 1 (Min Max Normaliztion)
 ## 2.1.2 Method 2 ()
 
 ### 2.2.- Selected Features Explanation.
