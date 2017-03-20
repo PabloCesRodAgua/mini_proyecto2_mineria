@@ -69,7 +69,9 @@ minmax_normalization <- function(x_value){
 
 #### 2.1.2 Method 2 (Z Score Normalization)
 There is also "z-score standardization". Which subtracts the mean value of feature x, and divides the outcome by the standard deviation of x as follows:
+
 $$x_{new} = \frac{x - \mu}{\sigma} - \frac{x - mean(x)}{stdev(x)}$$
+
 Basically this method rescales each of the feature's values in terms of how many standard deviations they fall above or below the mean value. The resulting value is called a z-score. The z-scores fall in an unbound range of negative and positive numbers. Unlike the normalized values, they have no predefined minimum and maximum.
 
 ### 2.2.- Selected Features Explanation.
