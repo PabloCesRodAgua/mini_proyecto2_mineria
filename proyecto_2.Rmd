@@ -41,6 +41,7 @@ Strenghts
 - Simple and effective.
 - Makes no assumptions abouthe the underlying data distribution.
 - Fast training phase.
+
 Weaknesses
 - Doesn't produces a model, limiting the ability to understand how features are related to a class.
 - Requieres selection of appropiate **k value**.
@@ -50,8 +51,22 @@ Weaknesses
 
 
 ### 2.1.- Normalization
-## 2.1.1 Method 1 (Min Max Normaliztion)
-## 2.1.2 Method 2 ()
+Before applying kNN algorithm, the first step is to apply a normalization method so features independent of their types get standarized. Lets say, if certain features have a larger range value than others, the distance measurements will be strongly dominatad by the larger range values.  
+
+For reasons of the Data Mining class, we will be using "Min Max Normalization" and "Z Score Normalization".
+
+#### 2.1.1 Method 1 (Min Max Normaliztion)
+$$x_{new} = \frac{x - min(x)}{max(x) - min(x)}$$
+
+```{r}
+minmax_normalization <- function(x_value){
+  return ((x - min(x_value)) / min(x_value) - max(x_value))
+} # minmax_normalization
+```
+
+#### 2.1.2 Method 2 ()
+```{r}
+```
 
 ### 2.2.- Selected Features Explanation.
 
