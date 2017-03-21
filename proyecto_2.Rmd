@@ -1,6 +1,6 @@
 ---
-title: "proyecto_2_minería_de_datos"
-author: "Santiago Delgado Ramos, Luis Armando Espinosa Mejía, Pablo César Rodríguez Aguayo"
+title: "Proyecto Minería de Datos"
+author: "Santiago Delgado Ramos, Luis Armando Espinosa Mejía & Pablo César Rodríguez Aguayo"
 date: "March 15, 2017"
 output: html_document
 ---
@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+<!-- Luis Espinosa --> 
 ## 1.- Basic Data Analysis
 
 ### 1.1.- Introduction 
@@ -23,6 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 1.5.- Skew of Data Interpretation
 
+<!-- Santiago Delgado --> 
 ### 1.6.- Histograms Interpretation
 
 ### 1.7.- Quartiles Interpretation
@@ -31,6 +33,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 1.9.- Scatterplots Interpretation
 
+<!-- Pablo Rodríguez --> 
 ## 2.- K - Nearest Neighbors
 KNN is a supervised classified method that classifies by characteristics of unlabeled examples by assigning t
 a class of similar label. The succes of this algorithm depends on the prediction, and the amount of data given.
@@ -49,7 +52,6 @@ Weaknesses
 - Nominal features and missing data requiere addtional processing.
 
 
-
 ### 2.1.- Normalization
 Before applying kNN algorithm, the first step is to apply a normalization method so features independent of their types get standarized. Lets say, if certain features have a larger range value than others, the distance measurements will be strongly dominated by the larger range values.  
 
@@ -65,6 +67,8 @@ Basically it subtracts the minimum of feature x from each value and divides by t
 minmax_normalization <- function(x_value){
   return ((x - min(x_value)) / min(x_value) - max(x_value))
 } # minmax_normalization
+
+#students_questionary <- as.data.frame(lapply(data[,c(1,4)], minmax_normalizations))
 ```
 
 #### 2.1.2 Method 2 (Z Score Normalization)
@@ -75,11 +79,18 @@ $$x_{new} = \frac{x - \mu}{\sigma} - \frac{x - mean(x)}{stdev(x)}$$
 Basically this method rescales each of the feature's values in terms of how many standard deviations they fall above or below the mean value. The resulting value is called a z-score. The z-scores fall in an unbound range of negative and positive numbers. Unlike the normalized values, they have no predefined minimum and maximum.
 
 ### 2.2.- Selected Features Explanation.
+
 ```{r}
 ```
-### 2.3.- Computer Distances
-```{r}
+### 2.3.- Compute Distances
+Ase we saw in class there are many ways to compute the distance between two points, but for these case the k-NN
+algorithm uses **Euclidean distance**, which is the distance one would measure if
+it were possible to use a ruler to connect two points, illustrated in the previous
+figure by the dotted lines connecting the wanted point to its neighbors.
 
+```{r}
+euclidean_distances <- dist(x = database, method = "euclidean")
+print(euclidean_distances)
 ```
 
 ### 2.4.- Trainning & Testing Sets
@@ -101,7 +112,7 @@ Basically this method rescales each of the feature's values in terms of how many
 ```{r}
 
 ```
-
+<!-- Santiago Delgado --> 
 ## 3.- Conclusions & Limitations
 ```{r}
 
