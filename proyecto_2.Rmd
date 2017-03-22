@@ -11,13 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 <!-- Luis Espinosa --> 
 ## 1.- Basic Data Analysis
 
-### 1.1.- Introduction 
+### 1.1.- Description the data domain
 
 ### 1.2.- How data was recolected
 
-#### 1.2.1 Limitations
-
-#### 1.2.2 Disadvantages
+#### 1.2.1 Limitations and disadvantages
 
 ### 1.3.- Basic Summary Statistics
 
