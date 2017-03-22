@@ -1,0 +1,81 @@
+horas de estudio, horas de television, horas de videojuegos, horas del dia en la universidad, 
+0=0, 
+2-4=1
+4-6=2
+mas de 6 =3
+---------------
+horas de sueño
+menos de 4=1
+4-6=2
+6-8=3
+8-10=4
+10 o mas=5
+----------------
+horas de ejercicio
+2-4=1
+4 o mas=2
+----------
+sueldo estimado
+6-10mil=1
+10-15mil=2
+15-20mil=3
+mas de 20mil=4
+--------
+horas estimadas posicionada en un trabajo fijo
+6-8=1
+8-10=2
+10-12=3
+mas de 12= 4
+
+Luis Armando
+que piensas hacer despues de salir de la carrera
+laborar=1
+posgrado=0
+----------
+genero
+hombre=1
+mujer=0
+
+Luis Armando
+horas de estudio, horas de television, horas de videojuegos, horas del dia en la universidad, 
+0=0, 
+2-4=1
+4-6=2
+mas de 6 =3
+---------------
+horas de sueño
+menos de 4=1
+4-6=2
+6-8=3
+8-10=4
+10 o mas=5
+----------------
+horas de ejercicio
+2-4=1
+4 o mas=2
+-----------
+que piensas hacer despues de salir de la carrera
+laborar=1
+posgrado=0
+----------
+genero
+hombre=1
+mujer=0
+-------
+tienes algun tipo de beca, utilizas el comedor, utilizacion de transporte publico
+si=1
+no=0
+--------
+
+----------
+sueldo estimado
+6-10mil=1
+10-15mil=2
+15-20mil=3
+mas de 20mil=4
+--------
+horas estimadas posicionada en un trabajo fijo
+6-8=1
+8-10=2
+10-12=3
+mas de 12= 4
