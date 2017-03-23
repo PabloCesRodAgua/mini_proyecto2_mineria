@@ -1,11 +1,9 @@
 ---
-title: "Proyecto MinerÃfï¿½a de Datos"
-author: Santiago Delgado Ramos, Luis Armando Espinosa MejÃfï¿½a & Pablo CÃfÂ©sar RodrÃfï¿½guez
-  Aguayo
-date: "March 15, 2017"
-output:
-  pdf_document: default
-  html_document: default
+title: "proyecto_2_presentacion"
+author: "Santiago Delgado Ramos, Luis Armando Espinosa Mejia & Pablo Cesar Rodríguez
+  Aguayo"
+date: "15 de marzo de 2017"
+output: ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
@@ -14,19 +12,20 @@ knitr::opts_chunk$set(echo = TRUE)
 <!-- Luis Espinosa --> 
 ## 1.- Basic Data Analysis
 
-### 1.1.- Description the data domain
-#### 1.1.1.- Description
+## 1.1.- Description the data domain
+### 1.1.1.- Description
 In this project a survey was conducted on relevant data from UAZ students, which will serve to determine and predict according to the data collected a student's career according to the information that we will mention later.
 
-#### 1.1.2.- Prosecution or process
+## 1.1.2.- Prosecution or process
+``` {r} 
 ## WE DELETE ALL NULL DATASET INFORMATION.
 setwd("C:/Users/Luis/Desktop/8-Semestre/Mineria de Datos/Mini proyectos/AnteProyecto2/mini_proyecto2_mineria")
 students_dataset <- read.csv("Encuesta-UAZ.csv", stringsAsFactors = FALSE)
 dim(students_dataset)
 students_dataset[students_dataset == "NA"] <- NA
 students_dataset <- na.omit(students_dataset)
-
-#### 1.1.3.- Description of variables
+```
+## 1.1.3.- Description of variables
 - **Horas de estudio por día:** Hours of study per day.
 - **Horas de televisión por día:** Hours of television per day.
 - **Horas de videojuegos por día:** Hours of video games per day.
@@ -36,6 +35,8 @@ students_dataset <- na.omit(students_dataset)
 - **Horas de ejercicio por día:** Hours of exercise per day:.
 - **Horas de sueño por día:** Hours of sleep per day.
 - **Utilización de transporte público:** If the student Uses the public transport.
+
+## 1.1.3(2).- Description of variables
 - **Utilizas el comedor estudiantil:** If student Uses student dining.
 - **Tienes alguna beca:** If the student has a scholarship.
 - **Materias Repetidas:** If the student repeated a class.
@@ -43,6 +44,8 @@ students_dataset <- na.omit(students_dataset)
 - **Pasión por la carrera:** Passion for the career.
 - **Facilidad percibida para ofertas laborales terminando estudios:** Perceived facility for job offers finishing studies.
 - **Sueldo estimado que esperas percibir al terminar los estudios (mensual):** Estimated salary you expect to receive at the end of your studies.
+
+## 1.1.3(3).- Description of variables
 - **Horas estimadas una vez posicionada en un trabajo fijo:** Estimated hours once positioned in a fixed job.
 - **Municipio de origen:** Of which Municipality is its origin.
 - **Género:** Gender.
@@ -50,28 +53,61 @@ students_dataset <- na.omit(students_dataset)
 - **Carrera:** career.
 - **Semestre en el que estás estudiando:**Semester in which you are studying.
 - **Que piensas hacer después de salir de la carrera.**What do you plan to do after you leave the university.
+
+## 1.1.4
 ```{r}
 str(students_dataset)
 ```
-### 1.2.- How data was recolected
 
-#### 1.2.1 Limitations and disadvantages
+## 1.2.- How data was recolected
+
+## 1.2.1 Limitations and disadvantages
 
 
-### 1.3.- Basic Summary Statistics
+## 1.3.- Basic Summary Statistics
+```{r}
+summary(students_dataset)
+```
+## 1.3.1 Minimum and Maximum
+**Minimum:**lowest avarage academic :
+```{r}
+avarage_academic_min <- min(students_dataset$Promedio_academico_aprox, na.rm = TRUE)
+print(avarage_academic_min)
+subset(students_dataset,Promedio_academico_aprox   == min(students_dataset$Promedio_academico_aprox, na.rm = TRUE))[c(1,6,21)]
+```
 
-### 1.4.- Boxplots Interpretation
+Passion of the career.
+```{r}
+passion_career_min <- min(students_dataset$Pasion_por_la_carrera)
+head(subset(students_dataset, Pasion_por_la_carrera == min(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)))[c(1,21)]
+```
 
-### 1.5.- Skew of Data Interpretation
+##1.3.1 Minimum and Maximum
+**Maximum**: Highest avarage academic
+```{r}
+avarage_academic_max <- max(students_dataset$Promedio_academico_aprox, na.rm = TRUE)
+print(avarage_academic_max)
+head(subset(students_dataset,Promedio_academico_aprox  == max(students_dataset$Promedio_academico_aprox, na.rm = TRUE)))[c(1,6,21)]
+```
+
+Passion of the career.
+```{r}
+passion_career_max <- max(students_dataset$Pasion_por_la_carrera)
+head(subset(students_dataset, Pasion_por_la_carrera == max(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)))[c(1,21)]
+```
+
+## 1.4.- Boxplots Interpretation
+
+## 1.5.- Skew of Data Interpretation
 
 <!-- Santiago Delgado --> 
-### 1.6.- Histograms Interpretation
+## 1.6.- Histograms Interpretation
 
-### 1.7.- Quartiles Interpretation
+## 1.7.- Quartiles Interpretation
 
-### 1.8.- Correlation Interpretation
+## 1.8.- Correlation Interpretation
 
-### 1.9.- Scatterplots Interpretation
+## 1.9.- Scatterplots Interpretation
 
 <!-- Pablo RodrÃ???guez --> 
 ## 2.- K - Nearest Neighbors
@@ -92,12 +128,12 @@ Weaknesses
 - Nominal features and missing data requiere addtional processing.
 
 
-### 2.1.- Normalization
+## 2.1.- Normalization
 Before applying kNN algorithm, the first step is to apply a normalization method so features independent of their types get standarized. Lets say, if certain features have a larger range value than others, the distance measurements will be strongly dominated by the larger range values.  
 
 For reasons of the Data Mining class, we will be using "Min Max Normalization" and "Z Score Normalization".
 
-#### 2.1.1 Method 1 (Min Max Normaliztion)
+## 2.1.1 Method 1 (Min Max Normaliztion)
 The "min-max normalization" is a traditional method for process feature transformation such that all 
 of its values fall in a range between 0 and 1. The formula for normalizing a feature is as follows:
 $$x_{new} = \frac{x - min(x)}{max(x) - min(x)}$$
@@ -111,44 +147,41 @@ minmax_normalization <- function(x_value){
 #students_questionary <- as.data.frame(lapply(data[,c(1,4)], minmax_normalizations))
 ```
 
-#### 2.1.2 Method 2 (Z Score Normalization)
+## 2.1.2 Method 2 (Z Score Normalization)
 There is also "z-score standardization". Which subtracts the mean value of feature x, and divides the outcome by the standard deviation of x as follows:
 
 $$x_{new} = \frac{x - \mu}{\sigma} - \frac{x - mean(x)}{stdev(x)}$$
 
 Basically this method rescales each of the feature's values in terms of how many standard deviations they fall above or below the mean value. The resulting value is called a z-score. The z-scores fall in an unbound range of negative and positive numbers. Unlike the normalized values, they have no predefined minimum and maximum.
 
-### 2.2.- Selected Features Explanation.
+## 2.2.- Selected Features Explanation.
 
 ```{r}
 ```
-### 2.3.- Compute Distances
+## 2.3.- Compute Distances
 Ase we saw in class there are many ways to compute the distance between two points, but for these case the k-NN
 algorithm uses **Euclidean distance**, which is the distance one would measure if
 it were possible to use a ruler to connect two points, illustrated in the previous
 figure by the dotted lines connecting the wanted point to its neighbors.
 
-```{r}
-euclidean_distances <- dist(x = database, method = "euclidean")
-print(euclidean_distances)
-```
 
-### 2.4.- Trainning & Testing Sets
+
+## 2.4.- Trainning & Testing Sets
 ```{r}
 
 ```
 
-### 2.5.- Determination of the "Optimal K"
+## 2.5.- Determination of the "Optimal K"
 ```{r}
 
 ```
 
-### 2.6.- KNN Classification Outputs
+## 2.6.- KNN Classification Outputs
 ```{r}
 
 ```
 
-### 2.7 Frequency Table & Interpretation
+## 2.7 Frequency Table & Interpretation
 ```{r}
 
 ```
