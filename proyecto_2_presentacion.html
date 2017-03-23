@@ -101,8 +101,6 @@
 
 <slide class=''><hgroup><h2>1.- Basic Data Analysis</h2></hgroup><article  id="basic-data-analysis">
 
-</article></slide><slide class=''><hgroup><h2>1.1.- Description the data domain</h2></hgroup><article  id="description-the-data-domain">
-
 <h3>1.1.1.- Description</h3>
 
 <p>In this project a survey was conducted on relevant data from UAZ students, which will serve to determine and predict according to the data collected a student&#39;s career according to the information that we will mention later.</p>
@@ -157,7 +155,7 @@ students_dataset &lt;- na.omit(students_dataset)</pre>
 <li><strong>Que piensas hacer después de salir de la carrera.</strong>What do you plan to do after you leave the university.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>1.1.4</h2></hgroup><article  id="section">
+</article></slide><slide class=''><hgroup><h2>1.1.4 Dataset</h2></hgroup><article  id="dataset">
 
 <pre class = 'prettyprint lang-r'>str(students_dataset)</pre>
 
@@ -351,13 +349,87 @@ head(subset(students_dataset, Pasion_por_la_carrera == max(students_dataset$Pasi
 ## 18                        0                               CRIMINOLOGIA
 ## 22                        1                    LICENCIATURA EN DERECHO</pre>
 
+</article></slide><slide class=''><hgroup><h2>1.3.2 Mean</h2></hgroup><article  id="mean">
+
+<p>\[\sigma  = \frac{\sum\limits_{i=1}^N x(i)}{N}\]</p>
+
+<p>The sum of the sample values divided by the number of samples in the example.</p>
+
+<h3>Mean of the academic average of students.</h3>
+
+<pre class = 'prettyprint lang-r'>mean(students_dataset$Promedio_academico_aprox, na.rm = TRUE)</pre>
+
+<pre >## [1] 8.39812</pre>
+
+</article></slide><slide class=''><hgroup><h2>1.3.2 Mean</h2></hgroup><article  id="mean-1">
+
+<h3>Mean of the passion of the career.</h3>
+
+<pre class = 'prettyprint lang-r'>mean(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)</pre>
+
+<pre >## [1] 8.632479</pre>
+
+<h3>Mean of the age of students.</h3>
+
+<pre class = 'prettyprint lang-r'>mean(students_dataset$Edad, na.rm = TRUE)</pre>
+
+<pre >## [1] 21.09402</pre>
+
+</article></slide><slide class=''><hgroup><h2>1.3.3 Median</h2></hgroup><article  id="median">
+
+<p>\[\\Mediana=L_{i-1}+\frac{\frac{N}{2}-N_{i-1}}{n_i}{a_i}\] Represents the value of the central position variable in an ordered data set.</p>
+
+<h3>Median of the academic average of students.</h3>
+
+<pre class = 'prettyprint lang-r'>median(students_dataset$Promedio_academico_aprox, na.rm = TRUE)</pre>
+
+<pre >## [1] 8.5</pre>
+
+</article></slide><slide class=''><hgroup><h2>1.3.3 Median</h2></hgroup><article  id="median-1">
+
+<h3>Median of the passion of the career.</h3>
+
+<pre class = 'prettyprint lang-r'>median(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)</pre>
+
+<pre >## [1] 9</pre>
+
+<h3>Median of the age of students.</h3>
+
+<pre class = 'prettyprint lang-r'>median(students_dataset$Edad, na.rm = TRUE)</pre>
+
+<pre >## [1] 21</pre>
+
 </article></slide><slide class=''><hgroup><h2>1.4.- Boxplots Interpretation</h2></hgroup><article  id="boxplots-interpretation">
+
+<p>It shows the mean of the academic average in which it is around the 9 and 8.</p>
+
+<pre class = 'prettyprint lang-r'>boxplot(students_dataset$Promedio_academico_aprox,
+     main = &quot;Boxplot academic average&quot;,
+     ylab = &quot;score&quot;)</pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABaAAAANgCAMAAADtRj90AAAAbFBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZrY6AAA6OgA6Ojo6ZmY6kNtmAABmOgBmZgBmZmZmtv+QOgCQtpCQ29uQ2/+2ZgC2tma225C2/7a2///bkDrbtmbb25Db/9vb////tmb/25D//7b//9v///8XLe6UAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAcK0lEQVR4nO3di3baWGC2YZJ2nLZO20wb2n/423ES3/89FsRBEggbLGnr2+R51po1iQNCSPJreevA6hWASKulZwCAYQINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACTePHl1Xftymn/vPrdoqfvr/3sJfnKV/0wnr3vp7GTOHG9wETEWgaF4GeNNE3hW07CwINXQJNYyDQE+byhrD9+nPSVxwi0NRGoGkMBXq6Et0QtvW0PxKuvoRAUxGBptEEuk1P07JxMet6lEBDWQJN4yzQ+5h9/muiqQs0fIRA0zgP9PnfxxFo+AiBpjEY6M4edHMMr/OVJrnHJ2xOxxQ3h9M/Nv3zQM4DfT61lzdPHtkMHrQ8fPXp3Ufuh9e/nQd6/w46D10f5rE77/vnPvee03kfQ/NwfXaa1//j797rf7syM5v9Xzedr77x5p4Pf7j+5qiTQNM4D/RLLyadQ4jHx+yb2jxi/6/NH/eBPvX2WOB+2C6n9lagN51/ex766tObjzykajcv3UCfvtw+fx/o00S27+f0oOOs99/H0Dy8NeP9ZfzSLqCBmdmXed0ukrff3Kfv3UAPTI86CTSNwTHoYwi6cejvD+7+st8d3j+3eeS/t489TLEXtoGpvRHowdc+7IEfHH6ODD6y+8Pgn9pi9U5aOTx/fXrM4cv/0z7o8JOm+z4G5+HNGd8/47hQ2yU8NDPNs/+5ffHBN9cJ8af/aAM9ND3qJNA0+oHep+S4//uy6nvuP+al88XN2UO7u4gDe8vHJ14P9Nnpf4dZWg/M0OAj+xVdHRvWKdvpa+cTHXrP3fcxNA/vzHj315J2UoMzc7bDPPrNUSeBpjFwHnRvfKIb0kOh9k952v9zfy9294juMGgnbNemduUg4elsku6gdzu8sp+HZk4HH7k5vcSxZk+nqTY/Cto/HYv71L6NZnKdsZzu+xich3dmvDvsvDlNdXBmOoHePfWNxdB+9a03R50EmsZloE97XutORvclOPzTWUTaL+1r1tkN74Tt2tSGA9154ulYX+9o2+kg2eAje78JtOd2d3eEN2dhe+48dv8Sm3Ya5+/jbB5um/GnduF8uzoz/cOP7765w4+f62+OOgk0jYE96F5Fj/l56fxL51fs/mj1t+40+xG6OrVrp9ltX+SpMx/nSds+77jvOvDIThtPe/zHl+22r78LfvY+zo/mte/jch7envHOuTHtn4ZnpvuTboo3R50EmsbQpd6dA3inb/Lega7Tk04h2XQf3D62zdnVqb17HnRbpv40bn7k/sWezl6r+Woza92z4LrvozM8f+19vKkT6Ha/+WzH/WJmzs5THP3mqJNA0zg7i+Nw1O6UknZXrncycWfIufOF04NPrWjDdnVq7wW6c8ZZ/xTAtx45MDtPQwfX2hHbp877fzfQN50h0ZmdtsttOa/MzKa/XN9fDO+8Oeok0DQGL1Rpvv3PxjF7fz3U4Hn4X9vknQV6aGpvBHpzFpuzyN/8yF4d+55fBwJ9eOJgoK/Pwxuz0445tNO/MjO9X0UmeHPUSaBpXFzafdqFeyvQhzGOsz3oSQN9dlbeG4F+95FlAz0wO+3bbN/tW4HuTH/sm6NOAk3jItAvxxC8McRxikE/E1MOcaxPr3A2+HoRx/cf2R8FuHituwL97hDH0Owcn/fUOXh3ZWaGltPZ1N4av9HkByHQNK4Heuiw3qE27S/dvbM47j1I2J6BdtGVzmkeV46OvRye//4jh4+jte4P9Pk8vDfjx5n4/F+dlxqemX59x7856iTQNIaHOHYhuH6a3cAdOi5Pszs7Ke3O0+w6Xz07za43ZrAt2fuPbM9EGx6fuCvQg/Pw3oyfltA/n/+Uu5iZK7+K3HCa3U2j41RCoGmcB3rfgfb84IFLSw4XSvz3l04R9oHu/vLe/MNHL1Tp/r7eaX8niMfgDz/yyrUc3StLXvo3F7k10EPz8P6Mnx7caejwzPQyO8Gbo04CTeMs0Ied46fOny8uzj6mor3ZaO+8u+4ZHhdXwl251Pt8x+8wjfay5c5wRv/K5zcf2bnyvHvR4Omyjs4l1zcHemAe3p/x9rU75RycmYFAv7sY3npz1EmgaQxeqNIrcat7q+TTYanuvS86Lu5hcWVq7Zd7u3wX0+teid374m2P7P/M6c/DfYF+52ZJV2bnOOmBH4b9mRk4ReNialduljQ4Peok0DQGA90bNz1LTecX7PP7Qf/jv54ee+PtRrsz0Ctd985s/9DeUHPgVp9XHtn98r+0X+6ftdZp+e2Bfvt2o1dm57U3GvHaebGzmekH+v039/nf2okOTY86CTSNoUB/G/rX9v4TZzXpnL77v8d23XrD/naC5/f2aR/7rXdjicub5V95ZNvR5yv3tO8d6rs90O/csP/ajA9dxT0wM2eH+q5M7f1PI7D/XDeBpnER6LPLjIc/pOpQkHaM9NiVsyHt84+KOp9aZxYuLm9ubzfdP454yOPzu488HYoc/FSo9vXuDvTQPNww4+efJjY4MxfnYlyZ2mnmBj/Py204aifQTMk5Xktx+vNDEmimJNDlbH8NufYZZTwKgWZKAl1O9+yZi8EXHoNAMyWBLqhzU//OdUU8EoFmSgJd0MWBXSMcD0egmZJAl3R2/Yrl/ngEmikJdFG9S1J8OOwDEmimJNCFDV+AyaMQaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBogVHagVwDVmD6Bk09xQksvbYB7TN7AqSc4pRl+IAHMpL5Ar08/Wp7uf7JAA/WoLNCbs93/exst0EA9qgr0jy8XAzSf/7prCgIN1KOmQP/6s1/kn1+3f//j73smIdBAPWoK9MtFjnfJ/nbPJAQaqEdNgV5fDmhsd6LvGoYWaKAeFQV6u7v8fPHFzX1jHAIN1KOiQG/3li+HM17uO0wo0EA9BBogVEWBNsQB/F4qCrSDhMDvpaZAD59md7lX/QaBBupRU6AHL1S571JCgQbqUVOg90Xu+/T9rikINFCPqgLdvZWdmyUBj66yQL+63Sjw26gv0Hco8fkEpLrt8ypqtfTSpQyB5jGVLmZhSy9eynjoQF+yYTMLGxazEGgYz4bFLAQaxrNhMQuBhvFsWMxCoGE8GxazqCjQA9cR7rjdKMuzYTELgYbxbFjMoqJAv/74ItBksmExi5oC3exD33V30Qu+j4B6VBXoXaHvvH3dGYEG6lFXoHejHHd9xNU5gQbqUVmgXzergU+OvZ1AA/WoLdA/v47ahRZooB61BXrkLrRAA/WoLtDjCDRQD4GG8WxYzEKgYTwbFrMQaBjPhsUsBBrGs2ExC4GG8WxYzEKgYTwbFrMQaBjPhsUsBBrGs2ExC4GG8WxYzEKgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg3j2bCYhUDDeDYsZiHQMJ4Ni1kINIxnw2IWAg3j2bCYhUDDeDYsZiHQMJ4Ni1kINIxnw2IWAg3j2bCYhUADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGsazYTELgYbxbFjMQqBhPBsWsxBoylhRr6U3nt+XQFPE0olhlKU3n9+WQFOEJV8xK28xAk0RlnzFrLzFCDRFWPIVs/IWI9AUYclXzMpbjEBThCVfMStvMQJNEZZ8xay8xQg0RVjyFbPyFiPQFGHJV8zKW4xAU4QlXzErbzECTRGWfMWsvMUINEVY8hWz8hYj0BRhyVfMyluMQFOEJV8xK28xAk0RlnzFrLzFCDRFWPIVs/IWI9AUYclXzMpbjEBThCVfMStvMQJNEZZ8xay8xQg0RVjyFbPyFiPQFGHJV8zKW4xAU4QlXzErbzECTRGWfMWsvMUINEVY8hWz8hYj0BSxomZLbz6/LYGmiKULwyhLbz6/LYGmiKULwyhLbz6/LYGmiKULwyhLbz6/LYGmiKULwyhLbz6/LYGmiKULwyhLbz6/LYGmCEu+YlbeYgSaIiz5ill5ixFoirDkK2blLUagKcKSr5iVtxiBpghLvmJW3mIEmiIs+YpZeYsRaIqw5Ctm5S1GoCnCkq+YlbcYgaYIS75iVt5iBJoiLPmKWXmLEWiKsOQrZuUtRqApwpKvmJW3GIGmCEu+YlbeYgSaIiz5ill5ixFoirDkK2blLabaQL/s7lL7dO+zbGlLseQrZuUtprJAb7ZV/vzX6+uvPw83Ev923/NtaUux5Ctm5S2mqkAfsvzp++v69FEP9xXalrYUS75iVt5iqgr0Mct//P/tf3+/NjvUu/3p29nSlmLJV8zKW0xNgX7ZZ/nHl22jn09fumsX2pa2FEu+YlbeYmoK9Hq/27wr9Gm/eX3fgUJb2lIs+YpZeYupKNC//jzsN2//cKry5hDtG9nSlmLJV8zKW0xFgf759TCccSr1626M441BaJ8fn2NoXVCNpTef35ZAU0TpojCppTef31ZFgTbEQSwbFrOoKNCng4Qv7cl13VbfwvcRs7BhMYuaAn04za65yNtpdiSxYTGLmgJ9ur77dKHKiwtViGDDYhY1BXp3mHDn0/dTql3qDTyuqgLd3izpkGo3SwIeWGWBbu1S7XajwCOrNtAfI9BAPQQaIJRAA4QSaIBQAg3j2bCYhUDDeDYsZiHQMJ4Ni1kINIxnw2IWAg3j2bCYhUDDeDYsZiHQMJ4Ni1kINIxnw2IWAg3j2bCYhUADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGsazYTELgYbxbFjMQqBhPBsWsxBoGM+GxSwEGsazYTELgYbxbFjMQqBhPBsWsxBoGM+GxSwEGsazYTELgQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0jGfDYhYCDePZsJiFQMN4NixmIdAwng2LWQg0jGfDYhYCDePZsJiFQMN4NixmIdA8qNVDW3rpUoZA85iWLujMll68lCHQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBghVLNA/v65Wn76/bv74e+oXvIdAA/UoFOhdnveBXq2+Tf2KdxBooB5lAr3v8y7Q69WihRZooB5FAv3rz9Xqj79/fNkGelfoz39N/Zo3E2igHkUC/bJaPb++7gO9G+R4/vDEf3491H1z2CO/d+YEGqhGkUCvV7tDg4dAb3enP3yg8Lj7/bI6uHdnXKCZ3nFrXHo+eDwlAr1N8m6f+RDo7c7vR8c41oe95lOf796J9k3E5Nqtcek54eGUCPTPr81xwWOgXz4a6B9fVqun/fT2k9iNbd83Ld9DTO0UZoVmcjUFen04AWSz7/R+WvcNaPsWYmKdLNu6mNoCQxzrD45BbyfzdPh/W/g7J+ZbiIl1NymbFxMrdJBwV9RDoLf700+XD7nBYUd89/82yncOaPsOYmICzYxKnWb3dAz0btz4Y1eqdALdFv7N8ZLVgA+9NFwj0MyozJWEzelxTaB35y9/8Cy7w0jJaaijIdAsS6CZUdFLvT927vLJ+hDmdW+Iwxg0SxJoZlToZkm7gY2xfd7uLe+PMv74chokOe5V3zxzvoOYlkAzo2K3Gz0kesx9OHaTaPah2yOD6zuvVPEdxMScZseMqrph/+5KlWZI49Dl3RWF993Xw7cQU3OhCvMpc5rdVPevawrdc+cZe76FmJwj0Mym0IUqk32Oyrrf53tP2PM9xPT0mbkUutT7Y5emDGrPCPlA9X0TAfWobQ96JIEG6lHqSsIlP4iwQ6CBepQ5i+PHl5B9aIEG6lFoDLpvuQ8lFGigHgINEEqgAUJVdSXheAIN1EOgAUIJNECoYoE+DEQvN/zcEGigHoUC3TlOuGiiBRqoxwKfqHLfHZynJdBAPYoEurlZ//5i75eP3eRoKgIN1KPUvThOUf74p3pPQaCBepS5YX934Hnam4/eSaCBehS63Wj3g6nu/CDuSQk0UI9Cl3p3BzVeXOoNcAOBBghliAMglIOEAKGcZgcQyoUqAKEWuNR7yZtxCDRQDzdLAgjldqMAodywHyCUQAOEKhXozf4sjp9flx3jEGigHuXO4mgC/ePLasHLVAQaqEm586Cbq713p0EvWWiBBupRJNCbzudcbVauJAS4RaGbJXVGnn98cS8OgBsUut2ou9kB3Mv9oAFCCTRAqEJj0N1BjbUhDoAblDqLox2Efln1RqTLEmigHkUCvbtO5XCe3e6PC15MKNBAPcpcSfiy6lruNGiBBipS6F4cu0u8D06XrCxBoIF6lL4f9KJ5FmigJm43ChBKoAFClQ30bih6wc/0FmigJsU+NHbX5f2hwiWHoQUaqEex0+w+/7W/LfSyHxwr0EA9igR6t+e83W/e/m/b5o0rCQFuUepS76fX0xXfa/eDBrhBwZslbf/XDD+7mx3ALQrebnT7v6bMAg1wi4KBfjl8XKxAA9yiYKDXh9sk+cgrgFsUGoN+boegt7l2kBDgfUXO4ljv0rzZX0S4O+VuufuNCjRQj2LnQR9uBL1eLXqxt0AD9ShzJeGm6fMuzJtFLyQUaKAihe7FsftIlcMpHAt+nopAAzVxu1GAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4SqN9A/v66e736SQAP1EGiAUAINEKqiQG+LPOTzX/fMnEAD1RBogFAVBfr1RaCB30lNgW72of/4u/2LMWjgkVUV6NfX9Wr16fv+jzcEemiHe865A5hSZYF+/fFldeiyQAMPrrZAv/768zDMYYgDeHDVBfr1dbPdD/4m0MDDqzDQzTDHk0ADj67GQDfDHJ//n0ADj63KQO+HOVYCDTy0SgPdDHMINPDQag10c0q0QAOPrN5Af4hAA/UQaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUJUF+seX1Wr1x9+nv//6c/X5rzueL9BAPeoK9Hq193T8gkADj6uqQB/73O5ECzTwuGoK9G5849v2/5u20AINPK6aAr1effre/GGb5UOhBRp4XBUFehvj09jz+lBogQYeV0WB/vm1GeDYOxT67UCvBsw1dwBTqzXQu0I/CTTwyKoN9G4c+tkQB/DAKgp0dwx6/9fVN4EGHldFgd6dXtfZhd6ddffpPwUaeFg1BXp3HvRz5+8vzaCyQAMPqqZAN1eodIc5XgQaeGBVBbopdHcferdPLdDAg6or0Lsjg8+9L2wEGnhUlQV6LIEG6iHQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqBhpNXB0vPB4xFoGGe1UmhmItAwyinMCs3kBBrG6GTZ1sXUBBrG6G5SNi8mJtAwhkAzI4GGMQSaGQk0jCHQzEigYQyBZkYCDWMINDMSaBjDaXbMSKBhFBeqMB+BhnFc6s1sBBpG0mfmItAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhPrtAg1Qj8kbOPUEp7T0wga4x+QNnHqCAExDoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAKIEGCCXQAKEEGiCUQAOEEmiAUAINEEqgAUIJNEAogQYIJdAAoQQaIJRAA4QSaIBQAg0QSqABQgk0QCiBBggl0AChBBoglEADhBJogFACDRBKoAFCCTRAqP8DERhKNFSddPUAAAAASUVORK5CYII=" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>1.5.- Skew of Data Interpretation</h2></hgroup><article  id="skew-of-data-interpretation">
 
-<!-- Santiago Delgado -->
+<p>\[CAp = \frac{\overline{x}-{Mo}{(X)}}{s}\]</p>
 
-</article></slide><slide class=''><hgroup><h2>1.6.- Histograms Interpretation</h2></hgroup><article  id="histograms-interpretation">
+<p>Being \[\overline{x}\] the mean, Mo (X) the mode and s the typical deviation</p>
+
+<p>The result is negative indicates that the average values are less than the mean, if it is positive they are higher.</p>
+
+</article></slide><slide class=''><hgroup><h2>1.5.- Skew of Data Interpretation</h2></hgroup><article  id="skew-of-data-interpretation-1">
+
+<pre class = 'prettyprint lang-r'>library(moments)
+
+skewness(na.omit(students_dataset$Promedio_academico_aprox))</pre>
+
+<pre >## [1] -4.099523</pre>
+
+<pre class = 'prettyprint lang-r'>skewness(na.omit(students_dataset$Pasion_por_la_carrera))</pre>
+
+<pre >## [1] -1.679668</pre>
+
+<p>The result of academic average and passion for the career gives us negative numbers so the average values are below mean. <!-- Santiago Delgado --> ## 1.6.- Histograms Interpretation</p>
 
 </article></slide><slide class=''><hgroup><h2>1.7.- Quartiles Interpretation</h2></hgroup><article  id="quartiles-interpretation">
 

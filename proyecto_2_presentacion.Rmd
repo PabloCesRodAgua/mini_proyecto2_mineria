@@ -12,7 +12,6 @@ knitr::opts_chunk$set(echo = TRUE)
 <!-- Luis Espinosa --> 
 ## 1.- Basic Data Analysis
 
-## 1.1.- Description the data domain
 ### 1.1.1.- Description
 In this project a survey was conducted on relevant data from UAZ students, which will serve to determine and predict according to the data collected a student's career according to the information that we will mention later.
 
@@ -54,7 +53,7 @@ students_dataset <- na.omit(students_dataset)
 - **Semestre en el que estás estudiando:**Semester in which you are studying.
 - **Que piensas hacer después de salir de la carrera.**What do you plan to do after you leave the university.
 
-## 1.1.4
+## 1.1.4 Dataset
 ```{r}
 str(students_dataset)
 ```
@@ -95,11 +94,73 @@ Passion of the career.
 passion_career_max <- max(students_dataset$Pasion_por_la_carrera)
 head(subset(students_dataset, Pasion_por_la_carrera == max(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)))[c(1,21)]
 ```
+##1.3.2 Mean
+$$\sigma  = \frac{\sum\limits_{i=1}^N x(i)}{N}$$
+
+The sum of the sample values divided by the number of samples in the example.
+
+###Mean of the academic average of students.
+```{r}
+mean(students_dataset$Promedio_academico_aprox, na.rm = TRUE)
+```
+
+##1.3.2 Mean
+
+###Mean of the passion of the career.
+```{r}
+mean(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)
+```
+
+###Mean of the age of students.
+```{r}
+mean(students_dataset$Edad, na.rm = TRUE)
+```
+
+## 1.3.3 Median
+$$\\Mediana=L_{i-1}+\frac{\frac{N}{2}-N_{i-1}}{n_i}{a_i}$$
+Represents the value of the central position variable in an ordered data set.
+
+###Median of the academic average of students.
+```{r}
+median(students_dataset$Promedio_academico_aprox, na.rm = TRUE)
+```
+
+##1.3.3 Median
+
+###Median of the passion of the career.
+```{r}
+median(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)
+```
+
+###Median of the age of students.
+```{r}
+median(students_dataset$Edad, na.rm = TRUE)
+```
 
 ## 1.4.- Boxplots Interpretation
+It shows the mean of the academic average in which it is around the 9 and 8.
+```{r}
+boxplot(students_dataset$Promedio_academico_aprox,
+     main = "Boxplot academic average",
+     ylab = "score")
+```
 
 ## 1.5.- Skew of Data Interpretation
+$$CAp = \frac{\overline{x}-{Mo}{(X)}}{s}$$
 
+Being $$\overline{x}$$ the mean, Mo (X) the mode and s the typical deviation
+
+The result is negative indicates that the average values are less than the mean, if it is positive they are higher.
+
+## 1.5.- Skew of Data Interpretation
+```{r} 
+library(moments)
+
+skewness(na.omit(students_dataset$Promedio_academico_aprox))
+
+skewness(na.omit(students_dataset$Pasion_por_la_carrera))
+```
+The result of academic average and passion for the career gives us negative numbers so the average values are below mean.
 <!-- Santiago Delgado --> 
 ## 1.6.- Histograms Interpretation
 
