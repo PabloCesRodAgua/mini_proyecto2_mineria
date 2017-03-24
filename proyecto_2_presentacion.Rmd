@@ -173,7 +173,7 @@ The result of academic average and passion for the career gives us negative numb
 
 ## 1.9.- Scatterplots Interpretation
 
-<!-- Pablo Rodri?guez --> 
+<!-- Pablo Rodriguez --> 
 ## 2.- Lazy Learning Classification(K-Nearest Neighbors)
 Machine Learning uses oftenly uses the classify data principle by placing int he same category or similar  characteristics, 
 commonly this is called "Nearest Neighbors".
@@ -182,12 +182,12 @@ KNN is a supervised classified method that classifies by characteristics of unla
 But if the given data is noisy and there is no clear distinction among the groups, the nearest neighborg algorithms 
 may struggle to identify the class limits.
 
-Strenghts
+**Strenghts**
 - Simple and effective.
 - Makes no assumptions abouthe the underlying data distribution.
 - Fast training phase.
 
-Weaknesses
+**Weaknesses**
 - Doesn't produces a model, limiting the ability to understand how features are related to a class.
 - Requieres selection of appropiate **k value**.
 - Slow classification phase.
@@ -197,7 +197,7 @@ Weaknesses
 ## 2.1.- Normalization
 Before applying kNN algorithm, the first step is to apply a normalization method so features independent of their types get standarized. Lets say, if certain features have a larger range value than others, the distance measurements will be strongly dominated by the larger range values.  But first let say that a distance function is required to measure similarity between instances of features. 
 
-Note: For reasons of the Data Mining class and less complexity, we will be using "Min Max Normalization". Also is its important to say that this two distances are not the only ones avaiable, there are also distance functions like Manhatan.. (Pendiente) 
+Note: For reasons of the Data Mining class and less complexity, we will be using "Min Max Normalization". Also is its important to say that this two distances are not the only ones avaiable, there are also distance functions like Euclidean, Maximum, Manhattan, Canberra, Binary/Minkowsky.
 
 
 ## 2.1.1 Method 1 (Min Max Normaliztion)
@@ -212,6 +212,8 @@ minmax_normalization <- function(x_value){
 } # minmax_normalization
 
 students_dataset_norm <- as.data.frame(lapply(data[,c(1:17)], minmax_normalization))
+students_dataset_norm$Utilizacion_de_transporte_publico <- factor(students_dataset_norm$Utilizacion_de_transporte_publico, levels = c(1, 0), labels = c("Si", "No"))
+print(prop.table(table(students_dataset_norm$Utilizacion_de_transporte_publico))*100, digits=1)
 ```
 
 ## 2.1.2 Method 2 (Z Score Normalization)
@@ -253,9 +255,7 @@ Based on empirical experiments we can say that a good way to calculate K value i
 ```
 
 ## 2.7 Frequency Table & Interpretation
-```{r}
 
-```
 <!-- Santiago Delgado --> 
 ## 3.- Conclusions & Limitations
 ```{r}
