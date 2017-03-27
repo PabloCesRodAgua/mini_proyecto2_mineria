@@ -280,7 +280,6 @@ students_dataset_train <- students_dataset_norm[1:178, ]
 students_dataset_test  <- students_dataset_norm[179:255, ]
 dim(students_dataset_train)
 dim(students_dataset_test)
-
 students_dataset_train_labels <- as.array(students_dataset[1:178, 1]) 
 students_dataset_test_labels  <- as.array(students_dataset[179:255, 1])
 print(students_dataset_train_labels)
