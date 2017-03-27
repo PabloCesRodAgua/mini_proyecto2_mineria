@@ -1,0 +1,313 @@
+---
+title: "proyecto_2_presentacion"
+author: "Santiago Delgado Ramos, Luis Armando Espinosa Mejia & Pablo Cesar Rodríguez
+  Aguayo"
+date: "15 de marzo de 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<!-- Luis Espinosa --> 
+## 1.- Basic Data Analysis
+
+### 1.1.1.- Description
+In this project a survey was conducted on relevant data from UAZ students, which will serve to determine and predict according to the data collected a student's career according to the information that we will mention later.
+
+## 1.1.2.- Prosecution or process
+``` {r} 
+## WE DELETE ALL NULL DATASET INFORMATION.
+#setwd("C:/Users/Luis/Desktop/8-Semestre/Mineria de Datos/Mini proyectos/AnteProyecto2/mini_proyecto2_mineria")
+students_dataset <- read.csv("Encuesta-UAZ.csv", stringsAsFactors = FALSE)
+dim(students_dataset)
+students_dataset[students_dataset == "NA"] <- NA
+students_dataset <- na.omit(students_dataset)
+```
+## 1.1.3.- Description of variables
+- **Horas de estudio por día:** Hours of study per day.
+- **Horas de televisión por día:** Hours of television per day.
+- **Horas de videojuegos por día:** Hours of video games per day.
+- **Horas de actividades sociales por día:** Hours of social activities per day.
+- **Horas al dia en la universidad aprox:** Hours per day at the university approx.
+- **Promedio académico aprox:** Average Academic.
+- **Horas de ejercicio por día:** Hours of exercise per day:.
+- **Horas de sueño por día:** Hours of sleep per day.
+- **Utilización de transporte público:** If the student Uses the public transport.
+
+## 1.1.3(2).- Description of variables
+- **Utilizas el comedor estudiantil:** If student Uses student dining.
+- **Tienes alguna beca:** If the student has a scholarship.
+- **Materias Repetidas:** If the student repeated a class.
+- **Dificultad percibida en la carrera:** Difficulty perceived in the career.
+- **Pasión por la carrera:** Passion for the career.
+- **Facilidad percibida para ofertas laborales terminando estudios:** Perceived facility for job offers finishing studies.
+- **Sueldo estimado que esperas percibir al terminar los estudios (mensual):** Estimated salary you expect to receive at the end of your studies.
+
+## 1.1.3(3).- Description of variables
+- **Horas estimadas una vez posicionada en un trabajo fijo:** Estimated hours once positioned in a fixed job.
+- **Municipio de origen:** Of which Municipality is its origin.
+- **Género:** Gender.
+- **Edad:** Age.
+- **Carrera:** career.
+- **Semestre en el que estás estudiando:**Semester in which you are studying.
+- **Que piensas hacer después de salir de la carrera.**What do you plan to do after you leave the university.
+
+## 1.1.4 Dataset
+```{r}
+str(students_dataset)
+```
+
+## 1.2.- How data was recolected
+The data were collected through a form filled out by UAZ students.
+The students were invited to collaborate in this survey and in this way we collect the data.
+
+## 1.2.1 Limitations and disadvantages
+- **False information.**
+- **Corrupt data.**
+
+## 1.3.- Basic Summary Statistics
+```{r}
+summary(students_dataset)
+```
+## 1.3.1 Minimum and Maximum
+**Minimum:**lowest avarage academic :
+```{r}
+avarage_academic_min <- min(students_dataset$Promedio_academico_aprox, na.rm = TRUE)
+print(avarage_academic_min)
+subset(students_dataset,Promedio_academico_aprox   == min(students_dataset$Promedio_academico_aprox, na.rm = TRUE))[c(1,6,21)]
+```
+
+Passion of the career.
+```{r}
+passion_career_min <- min(students_dataset$Pasion_por_la_carrera)
+head(subset(students_dataset, Pasion_por_la_carrera == min(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)))[c(1,21)]
+```
+
+##1.3.1 Minimum and Maximum
+**Maximum**: Highest avarage academic
+```{r}
+avarage_academic_max <- max(students_dataset$Promedio_academico_aprox, na.rm = TRUE)
+print(avarage_academic_max)
+head(subset(students_dataset,Promedio_academico_aprox  == max(students_dataset$Promedio_academico_aprox, na.rm = TRUE)))[c(1,6,21)]
+```
+
+Passion of the career.
+```{r}
+passion_career_max <- max(students_dataset$Pasion_por_la_carrera)
+head(subset(students_dataset, Pasion_por_la_carrera == max(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)))[c(1,21)]
+```
+##1.3.2 Mean
+$$\sigma  = \frac{\sum\limits_{i=1}^N x(i)}{N}$$
+
+The sum of the sample values divided by the number of samples in the example.
+
+###Mean of the academic average of students.
+```{r}
+mean(students_dataset$Promedio_academico_aprox, na.rm = TRUE)
+```
+
+##1.3.2 Mean
+
+###Mean of the passion of the career.
+```{r}
+mean(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)
+```
+
+###Mean of the age of students.
+```{r}
+mean(students_dataset$Edad, na.rm = TRUE)
+```
+
+## 1.3.3 Median
+$$\\Median=L_{i-1}+\frac{\frac{N}{2}-N_{i-1}}{n_i}{a_i}$$
+Represents the value of the central position variable in an ordered data set.
+
+###Median of the academic average of students.
+```{r}
+median(students_dataset$Promedio_academico_aprox, na.rm = TRUE)
+```
+
+##1.3.3 Median
+
+###Median of the passion of the career.
+```{r}
+median(students_dataset$Pasion_por_la_carrera, na.rm = TRUE)
+```
+
+###Median of the age of students.
+```{r}
+median(students_dataset$Edad, na.rm = TRUE)
+```
+
+## 1.4.- Boxplots Interpretation
+It shows the mean of the academic average in which it is around the 9 and 8.
+```{r}
+boxplot(students_dataset$Promedio_academico_aprox,
+     main = "Boxplot academic average",
+     ylab = "score")
+```
+
+## 1.5.- Skew of Data Interpretation
+$$CAp = \frac{\overline{x}-{Mo}{(X)}}{s}$$
+
+Being $$\overline{x}$$ the mean, Mo (X) the mode and s the typical deviation
+
+The result is negative indicates that the average values are less than the mean, if it is positive they are higher.
+
+## 1.5.- Skew of Data Interpretation
+```{r} 
+library(moments)
+
+skewness(na.omit(students_dataset$Promedio_academico_aprox))
+
+skewness(na.omit(students_dataset$Pasion_por_la_carrera))
+```
+The result of academic average and passion for the career gives us negative numbers so the average values are below mean.
+
+<!-- Santiago Delgado --> 
+## 1.6.- Histograms Interpretation
+Actual Semester Histogram
+```{r} 
+hist(students_dataset$semestre_en_el_que_estas_estudiando,main="Actual Semester Histogram",xlab="Semestre");
+```
+Students Age Histogram
+
+```{r} 
+hist(students_dataset$Edad,main="Histograma de la edad de los estudiantes",xlab="Edad");
+```
+
+## 1.7.- Quartiles Interpretation
+students dataset Quartiles
+```{r} 
+quantile(students_dataset$semestre_en_el_que_estas_estudiando)
+quantile(students_dataset$Sueldo_estimado_que_esperas_percibir_al_terminar_los_estudios)
+IQR(students_dataset$semestre_en_el_que_estas_estudiando)
+IQR(students_dataset$Sueldo_estimado_que_esperas_percibir_al_terminar_los_estudios)
+```
+## 1.8.- Correlation Interpretation
+La correlación es negativa, van de la mano, solo que en contra, o sea, mientras más vas avanzando, tus espectativas monetarias van cambiando
+The correlation is negative, while the students're in a major grade, their economic spectatives are changi 
+```{r} 
+cor(students_dataset$semestre_en_el_que_estas_estudiando,students_dataset$Sueldo_estimado_que_esperas_percibir_al_terminar_los_estudios)
+
+```
+## 1.9.- Scatterplots Interpretation
+##Semestre vs Sueldo Esperado
+
+Is depence the student semester, because the economic spectatives are different than when they arrive 
+by first time to the University.
+```{r} 
+plot(x=students_dataset$semestre_en_el_que_estas_estudiando,y=students_dataset$Sueldo_estimado_que_esperas_percibir_al_terminar_los_estudios,
+     main="Semester vs Money Spectatives",xlab="Semester",ylab="Money");
+```
+## Sex vs Salary Spectatives
+
+On the next, we can see if exists any difference between what sex are and your salary spectatives.
+```{r} 
+plot(x=students_dataset$Genero,y=students_dataset$Sueldo_estimado_que_esperas_percibir_al_terminar_los_estudios,main="Sex vs Spectative Salary",xlab="Sex",ylab="Salary");
+
+```
+
+<!-- Pablo Rodriguez --> 
+## 2.- Lazy Learning Classification(K-Nearest Neighbors)
+Machine Learning uses oftenly uses the classify data principle by placing int he same category or similar  characteristics, 
+commonly this is called "Nearest Neighbors".
+
+KNN is a supervised classified method that classifies by characteristics of unlabeled examples by assigning characteristics of a class with similar label. The succes of this algorithm depends on the prediction, and the amount of data given.
+But if the given data is noisy and there is no clear distinction among the groups, the nearest neighborg algorithms 
+may struggle to identify the class limits.
+
+**Strenghts**
+- Simple and effective.
+- Makes no assumptions abouthe the underlying data distribution.
+- Fast training phase.
+
+**Weaknesses**
+- Doesn't produces a model, limiting the ability to understand how features are related to a class.
+- Requieres selection of appropiate **k value**.
+- Slow classification phase.
+- Nominal features and missing data requiere addtional processing.
+
+ 
+## 2.1.- Normalization
+Before applying kNN algorithm, the first step is to apply a normalization method so features independent of their types get standarized. Lets say, if certain features have a larger range value than others, the distance measurements will be strongly dominated by the larger range values.  But first let say that a distance function is required to measure similarity between instances of features. 
+
+Note: For reasons of the Data Mining class and less complexity, we will be using "Min Max Normalization". Also is its important to say that this two distances are not the only ones avaiable, there are also distance functions like Euclidean, Maximum, Manhattan, Canberra, Binary/Minkowsky.
+
+
+## 2.1.1 Method 1 (Min Max Normaliztion)
+The "min-max normalization" is a traditional method for process feature transformation such that all 
+of its values fall in a range between 0 and 1. The formula for normalizing a feature is as follows:
+$$x_{new} = \frac{x - min(x)}{max(x) - min(x)}$$
+Basically it subtracts the minimum of feature x from each value and divides by the range of x.
+
+```{r}
+minmax_normalization <- function(x){
+  return ((x - min(x)) / min(x) - max(x))
+} # minmax_normalization
+
+students_dataset_norm <- round(as.data.frame(lapply(students_dataset[c(1:6)], minmax_normalization)),digits = 3)
+```
+
+## 2.1.2 Method 2 (Z Score Normalization)
+There is also "z-score standardization". Which subtracts the mean value of feature x, and divides the outcome by the standard deviation of x as follows:
+
+$$x_{new} = \frac{x - \mu}{\sigma} - \frac{x - mean(x)}{stdev(x)}$$
+
+Basically this method rescales each of the feature's values in terms of how many standard deviations they fall above or below the mean value. The resulting value is called a z-score. The z-scores fall in an unbound range of negative and positive numbers. Unlike the normalized values, they have no predefined minimum and maximum.
+```{r}
+normalize_z<- function( x){
+  return ((x - mean(x))/(sd(x)))
+}
+students_dataset_norm_z <-round(as.data.frame(lapply(students_dataset[,c(1,4)],normalize_z)),digits = 3)
+```
+
+
+## 2.2.- Selected Features Explanation.
+
+## 2.3.- Compute Distances
+Ase we saw in class there are many ways to compute the distance between two points, but for these case the k-NN
+algorithm uses **Euclidean distance**, which is the distance one would measure if
+it were possible to use a ruler to connect two points, illustrated in the previous
+figure by the dotted lines connecting the wanted point to its neighbors.
+
+
+
+## 2.4.- Trainning & Testing Sets
+```{r}
+students_dataset_train <- students_dataset_norm[1:178, ]
+students_dataset_test  <- students_dataset_norm[179:255, ]
+dim(students_dataset_train)
+dim(students_dataset_test)
+
+students_dataset_train_labels <- as.array(students_dataset[1:178, 1]) 
+students_dataset_test_labels  <- as.array(students_dataset[179:255, 1])
+print(students_dataset_train_labels)
+dim(students_dataset_train_labels)
+```
+## 2.5.- Determination of the "Optimal K"
+The decision of how much neighbor to use in the kNN algorithm will help determinate how good the model will generalize to future data. The fitting data of the trainning data is a problem, so the importance of a large k reduces the impact or variance cause by noisy data, but it also ignores small data on with important characteristics.
+
+Based on empirical experiments we can say that a good way to calculate K value is to determinate the square root of the number of training examples. 
+```{r}
+k_value = ceiling(sqrt(178) +1)
+print(k_value) 
+```
+
+## 2.6.- KNN Classification Outputs
+```{r}
+library(class)
+students_dataset_test_pred <- knn(train = students_dataset_train, test = students_dataset_test, cl = students_dataset_train_labels, k = k_value)
+```
+
+## 2.7 Frequency Table & Interpretation
+
+<!-- Santiago Delgado --> 
+## 3.- Conclusions & Limitations
+On the present document, we can see some characteristics of the students and we can determinato some factors that can influence on the students academic life, like if they're man or woman, their current age, or anay factor tan we saw on the 
+documnt. 
+- Limitaations of the used datasets are:}
+- Only are university student.
+- Basic characteristics like current semester, age, etc..
+- Characteristics like weight or height are determianted that don't have influency of the students.

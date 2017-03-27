@@ -1,8 +1,11 @@
 ---
-title: "Proyecto MinerÃ­a de Datos"
-author: "Santiago Delgado Ramos, Luis Armando Espinosa MejÃ­a & Pablo CÃ©sar RodrÃ­guez Aguayo"
+title: "Proyecto MinerÃfï¿½a de Datos"
+author: Santiago Delgado Ramos, Luis Armando Espinosa MejÃfï¿½a & Pablo CÃfÂ©sar RodrÃfï¿½guez
+  Aguayo
 date: "March 15, 2017"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -11,13 +14,49 @@ knitr::opts_chunk$set(echo = TRUE)
 <!-- Luis Espinosa --> 
 ## 1.- Basic Data Analysis
 
-### 1.1.- Introduction 
+### 1.1.- Description the data domain
+#### 1.1.1.- Description
+In this project a survey was conducted on relevant data from UAZ students, which will serve to determine and predict according to the data collected a student's career according to the information that we will mention later.
 
+#### 1.1.2.- Prosecution or process
+## WE DELETE ALL NULL DATASET INFORMATION.
+setwd("C:/Users/Luis/Desktop/8-Semestre/Mineria de Datos/Mini proyectos/AnteProyecto2/mini_proyecto2_mineria")
+students_dataset <- read.csv("Encuesta-UAZ.csv", stringsAsFactors = FALSE)
+dim(students_dataset)
+students_dataset[students_dataset == "NA"] <- NA
+students_dataset <- na.omit(students_dataset)
+
+#### 1.1.3.- Description of variables
+- **Horas de estudio por día:** Hours of study per day.
+- **Horas de televisión por día:** Hours of television per day.
+- **Horas de videojuegos por día:** Hours of video games per day.
+- **Horas de actividades sociales por día:** Hours of social activities per day.
+- **Horas al dia en la universidad aprox:** Hours per day at the university approx.
+- **Promedio académico aprox:** Average Academic.
+- **Horas de ejercicio por día:** Hours of exercise per day:.
+- **Horas de sueño por día:** Hours of sleep per day.
+- **Utilización de transporte público:** If the student Uses the public transport.
+- **Utilizas el comedor estudiantil:** If student Uses student dining.
+- **Tienes alguna beca:** If the student has a scholarship.
+- **Materias Repetidas:** If the student repeated a class.
+- **Dificultad percibida en la carrera:** Difficulty perceived in the career.
+- **Pasión por la carrera:** Passion for the career.
+- **Facilidad percibida para ofertas laborales terminando estudios:** Perceived facility for job offers finishing studies.
+- **Sueldo estimado que esperas percibir al terminar los estudios (mensual):** Estimated salary you expect to receive at the end of your studies.
+- **Horas estimadas una vez posicionada en un trabajo fijo:** Estimated hours once positioned in a fixed job.
+- **Municipio de origen:** Of which Municipality is its origin.
+- **Género:** Gender.
+- **Edad:** Age.
+- **Carrera:** career.
+- **Semestre en el que estás estudiando:**Semester in which you are studying.
+- **Que piensas hacer después de salir de la carrera.**What do you plan to do after you leave the university.
+```{r}
+str(students_dataset)
+```
 ### 1.2.- How data was recolected
 
-#### 1.2.1 Limitations
+#### 1.2.1 Limitations and disadvantages
 
-#### 1.2.2 Disadvantages
 
 ### 1.3.- Basic Summary Statistics
 
@@ -34,7 +73,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 1.9.- Scatterplots Interpretation
 
-<!-- Pablo RodrÃ­guez --> 
+<!-- Pablo RodrÃ???guez --> 
 ## 2.- K - Nearest Neighbors
 KNN is a supervised classified method that classifies by characteristics of unlabeled examples by assigning t
 a class of similar label. The succes of this algorithm depends on the prediction, and the amount of data given.
